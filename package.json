@@ -1,0 +1,28 @@
+{
+  "name": "practice1",
+  "version": "1.0.0",
+  "description": "this is for Practice node application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.2",
+    "express-swagger-generator": "^1.1.17",
+    "express-validator": "^6.12.1",
+    "http": "^0.0.1-security",
+    "http-errors": "^1.7.2",
+    "https": "^1.0.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "mysql2": "^2.3.0"
+  }
+}
