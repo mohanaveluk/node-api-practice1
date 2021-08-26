@@ -12,6 +12,15 @@ router.get('/update', (req, res) => {
 });
 
 /**
+ * @typedef Product
+ * @property {integer} productId
+ * @property {string} productName.required - name of the product
+ * @property {string} prodcutDescription - Some description for product
+ * @property {string} category - category of the product
+ * @property {string} price.required - price of the product product
+ */
+
+/**
  * This function comment is parsed by doctrine
  * @route get /api/v1/product/productlist
  * @group Product - Get active product(s) 
@@ -52,6 +61,21 @@ router.get('/productlist', productController.getProductList);
 //router.get('/:id', productController.getProductItem);
 router.get('/', productController.getProduct);
 router.get('/:id', productController.getProduct);
+
+
+/**
+ * This function comment is parsed by doctrine
+ * @route post /api/v1/product/update
+ * @group Product - update product into database
+ * @param {Product.model} Product.body.required - product information
+ * @produces application/json application/xml
+ * @consumes application/json application/xml
+ * @returns {Array.<object>} 200 - An array of user info
+ * @returns {Error}  default - Unexpected error
+ */
+
+ router.post('/update', productController.updateProductItem);
+
 
 
 module.exports = router;

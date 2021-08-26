@@ -66,3 +66,24 @@ exports.getProductItem = (req, res) => {
     }
     return res.json({status: 'true', message: '', products: product});
 }
+
+
+exports.updateProductItem = async (req, res) => {
+    var productId = req.body.productId;
+    var productName = req.body.productName;
+    var productDesc = req.body.prodcutDescription === undefined ? '': req.body.prodcutDescription;
+    var catId = req.body.category;
+    var productPrice = req.body.price;
+
+    if(productName !== undefined && productName === 'string') {
+        return res.json({status: 'false', message: 'Product name is required'});
+    }
+
+    var saveResponse = await productService.updateProduct(productId, productName, productDesc, catId, productPrice);
+    
+    if(saveResponse.status){
+        return res.json({status: 'true', message: '', result: saveResponse.result});
+    }
+    return res.json({status: 'false', message: saveResponse.message });    
+    
+}

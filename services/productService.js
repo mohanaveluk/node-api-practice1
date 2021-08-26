@@ -28,6 +28,19 @@ var productService = class ProductService {
         }
     }
 
+    static async updateProduct(productId, prodName, prodDesc, catId, price){
+        try {
+            var [updateResponse] = await productModel.updateProduct(productId, prodName, prodDesc, catId, price);
+            if(updateResponse !== undefined && updateResponse.length > 0 && updateResponse[0].length > 0){
+                return {status: true, message: '', result: 'success'};
+            }
+            return {status: false, message: 'Failed to update product info'};
+                
+        } catch (error) {
+            return {status: false, message: error.message};
+        }
+    }
+
 }
 
 module.exports = productService;

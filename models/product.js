@@ -11,7 +11,13 @@ var productModel = class ProductModel {
     ************************************************/    
     static async fetchProducts(){
         try {
-            var query = mysql.format('select * from product', []);
+            var query = mysql.format(`select 
+                id as productId,
+                product_name as productName,
+                Product_description as prodcutDescription,
+                categoryId as category,
+                product_price as price                
+            from product`, []);
             logger.info(query);
             var queryResult = await dbconfig.query(query);
             return queryResult;
@@ -42,6 +48,25 @@ var productModel = class ProductModel {
         }
     }
 
+    static async updateProduct(productId, prodName, prodDesc, catId, price){
+        try {
+            //var query = mysql.format('select * from product where id = ?', [productId]);
+            var procedureQuery = mysql.format('call proc_update_product(?, ?, ?, ?, ?)', [
+                productId,
+                prodName,
+                prodDesc,
+                catId,
+                price
+            ]);
+            logger.info(procedureQuery);
+            var queryResult = await dbconfig.query(procedureQuery);
+            return queryResult;
+
+        } catch (error) {
+            logger.error(JSON.stringify(error));
+            throw error;
+        }
+    }
 
 }
 

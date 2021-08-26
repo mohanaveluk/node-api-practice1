@@ -2,6 +2,8 @@ const http = require('http');
 const express = require('express');
 var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
 const flash = require('express-flash');
 const session = require('express-session');
 const csrf = require('csurf');
@@ -57,7 +59,9 @@ let options = {
 };
 
 expressSwagger(options);
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.raw());
 
 app.get('/', (req, res) => res.send("This is my root end point"));
 
