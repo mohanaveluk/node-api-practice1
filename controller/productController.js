@@ -87,3 +87,26 @@ exports.updateProductItem = async (req, res) => {
     return res.json({status: 'false', message: saveResponse.message });    
     
 }
+
+exports.getCategory = async (req, res) => {
+
+    const categoryId = req.params.id;
+
+    var getResponse = await productService.fetchCategory(categoryId);
+    
+    // var category = [
+    //     {id: 1, categorname: 'Electronics'},
+    //     {id: 2, categorname: 'Wearable'},
+    //     {id: 3, categorname: 'Grocery'},
+    //     {id: 4, categorname: 'Automobile'},
+    //     {id: 5, categorname: 'Accesssories'},
+    // ];
+
+    // return res.json({status: 'true', message: '', result: category});
+    
+    if(getResponse.status){
+        return res.json({status: 'true', message: '', result: getResponse.result});
+    }
+    return res.json({status: 'false', message: saveResponse.message });    
+    
+}

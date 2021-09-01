@@ -46,21 +46,7 @@ router.get('/productlist', productController.getProductList);
 
 
 
-/**
- * This function comment is parsed by doctrine
- * @route get /api/v1/product
- * @group Product - Get active product 
- * @param {string} productId.query.required
- * @produces application/json application/xml
- * @consumes application/json application/xml
- * @returns {Array.<object>} 200 - An array of user info
- * @returns {Error}  default - Unexpected error
- */
 
-//router.get('/', productController.getProductItem);
-//router.get('/:id', productController.getProductItem);
-router.get('/', productController.getProduct);
-router.get('/:id', productController.getProduct);
 
 
 /**
@@ -77,5 +63,35 @@ router.get('/:id', productController.getProduct);
  router.post('/update', productController.updateProductItem);
 
 
+
+ /**
+ * This function comment is parsed by doctrine
+ * @route get /api/v1/product/category
+ * @group Product - Get active product(s) from database
+ * @produces application/json application/xml
+ * @consumes application/json application/xml
+ * @returns {Array.<object>} 200 - An array of user info
+ * @returns {Error}  default - Unexpected error
+ */
+
+ router.get('/category', productController.getCategory);
+ router.get('/category/:id', productController.getCategory);
+
+
+ /**
+ * This function comment is parsed by doctrine
+ * @route get /api/v1/product
+ * @group Product - Get active product 
+ * @param {string} productId.query.required
+ * @produces application/json application/xml
+ * @consumes application/json application/xml
+ * @returns {Array.<object>} 200 - An array of user info
+ * @returns {Error}  default - Unexpected error
+ */
+
+//router.get('/', productController.getProductItem);
+//router.get('/:id', productController.getProductItem);
+router.get('/', productController.getProduct);
+router.get('/:id', productController.getProduct);
 
 module.exports = router;

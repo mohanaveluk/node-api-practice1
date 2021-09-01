@@ -62,3 +62,28 @@ END$$
 DELIMITER ;
 
 -- call proc_update_product(101, 'Keyboard- wirelesss', '', 'Electronics', 120)
+
+
+
+-- proc_get_category
+DROP procedure IF EXISTS `proc_get_category`;
+DELIMITER $$
+CREATE PROCEDURE `proc_get_category`(
+    IN __catId  bigint(20)
+)
+BEGIN
+	
+    IF __catId <= 0 THEN
+		select 
+			id,
+            category_name 
+        from productcategory order by category_name;
+    ELSE
+		select 
+        	id,
+            category_name 
+		from productcategory where id = __catId order by category_name;
+    END IF;
+    
+END$$
+DELIMITER ;

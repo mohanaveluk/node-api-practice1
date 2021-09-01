@@ -41,6 +41,19 @@ var productService = class ProductService {
         }
     }
 
+
+    static async fetchCategory(CategoryId){
+        try {
+            var [allCategory] = await productModel.fetchCategory(+CategoryId);
+            if(allCategory !== undefined && allCategory.length > 0 && allCategory[0].length >0){
+                return {status: true, message: '', result: allCategory[0]};
+            }
+            return {status: false, message: 'No category exist at this moment'};
+                
+        } catch (error) {
+            return {status: false, message: error.message};
+        }
+    }
 }
 
 module.exports = productService;
