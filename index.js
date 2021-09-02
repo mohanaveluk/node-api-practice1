@@ -37,14 +37,14 @@ let options = {
                 name: 'Mohanavelu Kumarsamy'
             }
         },
-        host: IN_PRODUCITION ? 'localhost:3000' : 'localhost:3000',
-        //host: IN_PRODUCITION ? 'palmofashion-hqhsvwro4a-uc.a.run.app' : 'localhost:3000',
+        //host: IN_PRODUCITION ? 'localhost:3000' : 'localhost:3000',
+        host: IN_PRODUCITION ? 'palmofashion-hqhsvwro4a-uc.a.run.app' : 'localhost:3000',
         basePath: '/',
         produces: [
             "application/json",
             "application/xml"
         ],
-        schemes: IN_PRODUCITION ? ['http', 'https'] : ['http', 'https'],
+        schemes: IN_PRODUCITION ? ['https', 'https'] : ['http', 'https'],
         securityDefinitions: {
             JWT: {
                 type: 'apiKey',
