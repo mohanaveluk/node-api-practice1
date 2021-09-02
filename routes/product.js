@@ -68,6 +68,7 @@ router.get('/productlist', productController.getProductList);
  * This function comment is parsed by doctrine
  * @route get /api/v1/product/category
  * @group Product - Get active product(s) from database
+ * @param {string} id.query.required - Category Id
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @returns {Array.<object>} 200 - An array of user info
