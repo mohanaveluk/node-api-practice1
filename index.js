@@ -37,8 +37,8 @@ let options = {
                 name: 'Mohanavelu Kumarsamy'
             }
         },
-        //host: IN_PRODUCITION ? 'localhost:3000' : 'localhost:3000',
-        host: IN_PRODUCITION ? 'stardentalsyncher-hqhsvwro4a-uc.a.run.app' : 'localhost:3000',
+        host: IN_PRODUCITION ? 'localhost:3000' : 'localhost:3000',
+        //host: IN_PRODUCITION ? 'stardentalsyncher-hqhsvwro4a-uc.a.run.app' : 'localhost:3000',
         basePath: '/',
         produces: [
             "application/json",
