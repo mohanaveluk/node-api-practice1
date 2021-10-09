@@ -87,3 +87,91 @@ BEGIN
     
 END$$
 DELIMITER ;
+
+
+
+-- proc_update_user
+DROP procedure IF EXISTS `proc_update_user`;
+DELIMITER $$
+CREATE PROCEDURE `proc_update_user`(
+    IN __userid  bigint(11),
+    IN __guid  varchar(1000),
+    IN __username  varchar(255),
+    IN __password  text,
+    IN __firstname  varchar(255),
+    IN __lastname  varchar(255),
+    IN __mobile  varchar(10),
+    IN __createdon varchar(30)
+  
+)
+BEGIN
+
+    DECLARE __tempAffectedRow int(1) default 0;
+	DECLARE __tempRespose varchar(10) default '';
+
+    IF __userid <= 0 THEN
+		insert into user (
+			org_id
+			,username
+			,password
+			,firstname
+			,lastname
+			,phone
+            ,createdon
+		) values (
+			1
+			,__username
+			,__password
+			,__firstname
+			,__lastname
+			,__mobile
+            ,__createdon			
+		);
+		SET __tempAffectedRow = last_insert_id();
+        SET __tempRespose = 'success';
+    ELSE
+		update user set 
+			password = __password
+			,firstname = __firstname
+			,lastname = __lastname
+			,phone = __mobile
+			,createdon = __createdon
+		where id = __userid;
+        SET __tempAffectedRow = __userid;
+        SET __tempRespose = 'success';
+    END IF;
+    select __tempAffectedRow as responseId, __tempRespose as response;
+    
+    
+END$$
+DELIMITER ;
+
+
+
+-- proc_get_user
+DROP procedure IF EXISTS `proc_get_user`;
+DELIMITER $$
+CREATE PROCEDURE `proc_get_user`(
+    IN __username  varchar(255)
+)
+BEGIN
+	
+	select 
+		id
+		,org_id
+		,username
+		,password
+		,firstname
+		,lastname
+		,phone
+		,roleid
+		,profile_picture_url
+		,createdon
+		,updatedon
+		,updatedby
+	from user
+	where username = __username and active = 1 order by id limit 1;
+
+    
+END$$
+DELIMITER ;

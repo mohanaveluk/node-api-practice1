@@ -11,6 +11,7 @@ const cors = require('cors');
 var elogger = require('./logger/logconfig');
 
 const routerProduct = require('./routes/product');
+const routerUser = require('./routes/user');
 
 const app = express();
 
@@ -37,8 +38,8 @@ let options = {
                 name: 'Mohanavelu Kumarsamy'
             }
         },
-        //host: IN_PRODUCITION ? 'localhost:3000' : 'localhost:3000',
-        host: IN_PRODUCITION ? 'palmofashion-hqhsvwro4a-uc.a.run.app' : 'localhost:3000',
+        host: IN_PRODUCITION ? 'localhost:3000' : 'localhost:3000',
+        //host: IN_PRODUCITION ? 'palmofashion-hqhsvwro4a-uc.a.run.app' : 'localhost:3000',
         basePath: '/',
         produces: [
             "application/json",
@@ -66,6 +67,7 @@ app.use(bodyParser.raw());
 app.get('/', (req, res) => res.send("This is my root end point"));
 
 app.use('/api/v1/product', routerProduct);
+app.use('/api/v1/user', routerUser);
 
 
 //CSRF Protection

@@ -90,7 +90,7 @@ exports.updateProductItem = async (req, res) => {
 
 exports.getCategory = async (req, res) => {
 
-    const categoryId = req.params.id === undefined ? req.query.id: req.params.Id;
+    const categoryId = req.params.id === undefined ? req.query.id: req.params.id;
 
     var getResponse = await productService.fetchCategory(categoryId);
     
