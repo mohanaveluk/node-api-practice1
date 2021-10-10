@@ -1,6 +1,7 @@
 const userService = require('../services/user');
 const logger = require('../logger/logconfig');
 
+
 exports.apiValidateUserByEmail = async (req, res, next) => {
     const useremail = req.body.useremail;
     const userpassword = req.body.userpassword;
