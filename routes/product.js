@@ -1,5 +1,6 @@
 const  express = require('express');
 const productController = require('../controller/productController');
+const isAuth = require('../middleware/is-auth');
 
 var router = express.Router();
 
@@ -30,7 +31,7 @@ router.get('/update', (req, res) => {
  * @returns {Error}  default - Unexpected error
  */
 
-router.get('/productlist', productController.getProductList);
+router.get('/productlist', isAuth, productController.getProductList);
 
 /**
  * This function comment is parsed by doctrine
@@ -42,7 +43,7 @@ router.get('/productlist', productController.getProductList);
  * @returns {Error}  default - Unexpected error
  */
 
- router.get('/all', productController.getProducts);
+ router.get('/all', isAuth, productController.getProducts);
 
 
 
@@ -60,7 +61,7 @@ router.get('/productlist', productController.getProductList);
  * @returns {Error}  default - Unexpected error
  */
 
- router.post('/update', productController.updateProductItem);
+ router.post('/update', isAuth, productController.updateProductItem);
 
 
 
@@ -75,8 +76,8 @@ router.get('/productlist', productController.getProductList);
  * @returns {Error}  default - Unexpected error
  */
 
- router.get('/category', productController.getCategory);
- router.get('/category/:id', productController.getCategory);
+ router.get('/category', isAuth, productController.getCategory);
+ router.get('/category/:id', isAuth, productController.getCategory);
 
 
  /**
@@ -92,7 +93,7 @@ router.get('/productlist', productController.getProductList);
 
 //router.get('/', productController.getProductItem);
 //router.get('/:id', productController.getProductItem);
-router.get('/', productController.getProduct);
-router.get('/:id', productController.getProduct);
+router.get('/', isAuth, productController.getProduct);
+router.get('/:id', isAuth, productController.getProduct);
 
 module.exports = router;
