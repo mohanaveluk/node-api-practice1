@@ -31,7 +31,7 @@ router.get('/update', (req, res) => {
  * @returns {Error}  default - Unexpected error
  */
 
-router.get('/productlist', isAuth, productController.getProductList);
+router.get('/productlist', productController.getProductList);
 
 /**
  * This function comment is parsed by doctrine
@@ -43,7 +43,7 @@ router.get('/productlist', isAuth, productController.getProductList);
  * @returns {Error}  default - Unexpected error
  */
 
- router.get('/all', isAuth, productController.getProducts);
+ router.get('/all', productController.getProducts);
 
 
 
@@ -61,7 +61,7 @@ router.get('/productlist', isAuth, productController.getProductList);
  * @returns {Error}  default - Unexpected error
  */
 
- router.post('/update', isAuth, productController.updateProductItem);
+ router.post('/update', productController.updateProductItem);
 
 
 
@@ -76,8 +76,8 @@ router.get('/productlist', isAuth, productController.getProductList);
  * @returns {Error}  default - Unexpected error
  */
 
- router.get('/category', isAuth, productController.getCategory);
- router.get('/category/:id', isAuth, productController.getCategory);
+ router.get('/category',  productController.getCategory);
+ router.get('/category/:id', productController.getCategory);
 
 
  /**
